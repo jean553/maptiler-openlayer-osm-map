@@ -10,6 +10,11 @@
 * get cities polygons
 * get geolocation information
 
+## Notes
+
+The server is blocking mono-threaded. So it should be used for development purposes only.
+In fact, if one request blocks, all the requests block.
+
 ## Build the project
 
 ```sh
