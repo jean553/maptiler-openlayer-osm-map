@@ -13,3 +13,11 @@
       apt:
         name: nginx
         update_cache: yes
+
+    - name: nginx configuration copied
+      copy:
+        src: nginx.conf
+        dest: /etc/nginx/nginx.conf
+
+    - name: nginx started
+      shell: service nginx start
