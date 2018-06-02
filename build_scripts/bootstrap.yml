@@ -1,0 +1,15 @@
+---
+- hosts: all
+  become: yes
+
+  tasks:
+
+    - name: flask and requests installed
+      pip:
+        requirements: /vagrant/build_scripts/requirements.txt
+        executable: pip3
+
+    - name: nginx installed
+      apt:
+        name: nginx
+        update_cache: yes
