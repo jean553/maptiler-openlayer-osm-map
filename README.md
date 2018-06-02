@@ -24,14 +24,14 @@ Connect to the container:
 vagrant ssh
 ```
 
-Start the server:
+Start the server with the options `maptiler_key` and `max_requests_amount`.
 
 ```sh
-FLASK_APP=main.py flask run --host=0.0.0.0
+python3 main.py maptiler_key max_requests_amount
 ```
 
 Open the following address into your browser:
 
 ```sh
-python3 main.py --maptiler-key your_maptiler_key
+http://0.0.0.0:5000/
 ```
