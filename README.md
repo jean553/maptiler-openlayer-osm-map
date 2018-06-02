@@ -33,5 +33,5 @@ FLASK_APP=main.py flask run --host=0.0.0.0
 Open the following address into your browser:
 
 ```sh
-http://0.0.0.0:5000
+python3 main.py --maptiler-key your_maptiler_key
 ```

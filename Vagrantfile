@@ -21,7 +21,7 @@ Vagrant.configure(2) do |config|
 
     app.vm.provision "installs", "type": "shell" do |installs|
       installs.inline = "
-        pip install Flask
+        pip3 install Flask
       "
     end
   end
