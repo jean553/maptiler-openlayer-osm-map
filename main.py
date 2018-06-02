@@ -1,6 +1,9 @@
+import sys
 from flask import Flask, render_template
 
 app = Flask(__name__)
+
+key = ''
 
 
 @app.route('/')
@@ -9,4 +12,5 @@ def main():
 
 
 if __name__ == '__main__':
-    app.run()
+    key = sys.argv[1]
+    app.run(host='0.0.0.0')
