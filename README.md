@@ -38,5 +38,5 @@ python3 main.py maptiler_key max_requests_amount
 Open the following address into your browser:
 
 ```sh
-http://0.0.0.0:5000/
+http://0.0.0.0:8080/
 ```
