@@ -34,6 +34,16 @@ function initialize_map(
         source: selectorVector
     });
 
+    /* polygons creation initialization */
+
+    var drawPolygonsVector = new ol.source.Vector({wrapX: false});
+    var drawPolygonsLayer = new ol.layer.Vector({source: drawPolygonsVector});
+
+    var drawInteraction = new ol.interaction.Draw({
+        source: drawPolygonsVector,
+        type: 'Polygon'
+    });
+
     /* map area initialization */
 
     var map = new ol.Map({
@@ -46,7 +56,8 @@ function initialize_map(
                     url: 'http://0.0.0.0:8080/tiles/{z}/{x}/{y}',
                 })
             }),
-            vectorLayer
+            vectorLayer,
+            drawPolygonsLayer
         ],
         view: new ol.View({
             projection: 'EPSG:4326',
@@ -54,6 +65,8 @@ function initialize_map(
             zoom: 16
         })
     });
+
+    map.addInteraction(drawInteraction);
 
     /* update the selection marker position
        when the map is manually updated */
