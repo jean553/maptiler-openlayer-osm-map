@@ -1,5 +1,12 @@
 # maptiler-openlayer-osm-map
 
+## Table of content
+ * [Objectives](#objectives)
+ * [Notes](#notes)
+ * [Build the project](#build-the-project)
+ * [Run the project](#run-the-project)
+ * [Self signed certificate for geolocation](#self-signed-certificate-for-geolocation)
+
 ## Objectives
 
 * display map tiles
@@ -39,4 +46,31 @@ Open the following address into your browser:
 
 ```sh
 http://0.0.0.0:8080/
+```
+
+(or using https if configured):
+
+```sh
+https://0.0.0.0:8083/
+```
+
+## Self signed certificate for geolocation
+
+Secured connection must be establish between the client and the server
+in order to let the browser enabled client geolocation.
+
+Simple self-signed certificate generation procedure can be found [here](https://www.digitalocean.com/community/tutorials/how-to-create-an-ssl-certificate-on-nginx-for-ubuntu-14-04).
+
+The following lines must be added to `/etc/nginx/nginx.conf`:
+
+```sh
+server {
+
+    ...
+
+    listen 443 ssl;
+
+    ssl_certificate your_certificate_path;
+    ssl_certificate_key your_key_path;
+}
 ```
