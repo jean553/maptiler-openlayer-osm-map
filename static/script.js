@@ -9,6 +9,33 @@ function initialize_map(
     longitude
 ) {
 
+    /* selection marker initialization */
+
+    var selectorMarker = new ol.Feature({
+        geometry: new ol.geom.Point([longitude, latitude])
+    });
+
+    var selectorStyle = new ol.style.Style({
+        image: new ol.style.Icon({
+            anchor: [0.5, 46],
+            anchorXUnits: 'fraction',
+            anchorYUnits: 'pixels',
+            src: 'https://openlayers.org/en/v4.6.5/examples/data/icon.png'
+        })
+    });
+
+    selectorMarker.setStyle(selectorStyle);
+
+    var selectorVector = new ol.source.Vector({
+        features: [selectorMarker]
+    });
+
+    var vectorLayer = new ol.layer.Vector({
+        source: selectorVector
+    });
+
+    /* map area initialization */
+
     var map = new ol.Map({
         target: 'map',
         layers: [
@@ -19,6 +46,7 @@ function initialize_map(
                     url: 'http://0.0.0.0:8080/tiles/{z}/{x}/{y}',
                 })
             }),
+            vectorLayer
         ],
         view: new ol.View({
             projection: 'EPSG:4326',
@@ -26,9 +54,24 @@ function initialize_map(
             zoom: 16
         })
     });
+
+    /* update the selection marker position
+       when the map is manually updated */
+
+    map.on(
+        'moveend',
+        function(evt) {
+
+            var position = map.getView().getCenter();
+            selectorMarker.setGeometry(new ol.geom.Point([
+                position[0],
+                position[1]
+            ]));
+        }
+    );
 }
 
-if ("geolocation" in navigator) {
+if ('geolocation' in navigator) {
 
     navigator.geolocation.getCurrentPosition(
         function(position) {
