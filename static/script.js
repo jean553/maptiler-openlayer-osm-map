@@ -82,6 +82,24 @@ function initialize_map(
             ]));
         }
     );
+
+    drawPolygonsVector.on(
+        "addfeature",
+        function(evt) {
+
+            var features = drawPolygonsLayer.getSource().getFeatures();
+
+            /* get the first features array item, we only list coordinates of the first polygon */
+            var coordinates = features[0].getGeometry().getCoordinates()[0];
+            var list = document.getElementById("coordinates");
+
+            list.innerHTML = "";
+
+            coordinates.forEach(function(coordinate) {
+                list.innerHTML += "<p>" + coordinate[0] + " ; " + coordinate[1] + "</p>";
+            });
+        }
+    );
 }
 
 if ('geolocation' in navigator) {
