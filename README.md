@@ -3,6 +3,7 @@
 ## Table of content
  * [Objectives](#objectives)
  * [Notes](#notes)
+ * [Build the Nominatim server](#build-the-nominatim-server)
  * [Build the project](#build-the-project)
  * [Run the project](#run-the-project)
  * [Self signed certificate for geolocation](#self-signed-certificate-for-geolocation)
@@ -21,6 +22,26 @@
 
 The server is blocking mono-threaded. So it should be used for development purposes only.
 In fact, if one request blocks, all the requests block.
+
+## Build the Nominatim server
+
+A Nominatim server instance is required to ensure geocoding features.
+Full explanation to build a Docker Nominatim server can be found [here](https://github.com/mediagis/nominatim-docker).
+
+Update the Dockerfile with the data you need:
+
+```Dockerfile
+ENV PBF_DATA http://download.geofabrik.de/europe/monaco-latest.osm.pbf
+```
+
+(keep `monaco-latest` in order to have a fast image building process,
+downloading from geofrabik takes time, exspecially for big files)
+
+Build the image:
+
+```sh
+docker build -t nominatim .
+```
 
 ## Build the project
 
