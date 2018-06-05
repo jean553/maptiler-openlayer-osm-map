@@ -9,6 +9,12 @@
     >
     <script src="https://openlayers.org/en/v4.6.5/build/ol.js">
     </script>
+    <style>
+      #map {
+        width: 600px;
+        height: 600px;
+      }
+    </style>
   </head>
   <body>
     <div
@@ -16,6 +22,24 @@
       class="map"
     >
     </div>
+    <form>
+        <input
+            type="text"
+            id="location"
+        >
+        <button
+            id="search"
+            type="button"
+        >
+            Search
+        </button>
+    </form>
+    <p><b>Current marker location:</b> <span id="current"></span></p>
+    <p><b>Inside polygon:</b> <span id="inside-polygon"></span></p>
+    <hr />
+    <div id="locations">
+    </div>
+    <hr />
     <div id="coordinates">
     </div>
     <script src="{{ url_for('static', filename='script.js') }}"></script>
