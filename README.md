@@ -17,6 +17,7 @@
 * manually draw a polygon and save its properties
 * get cities polygons
 * get geolocation information
+* limit requests to MapTiler (tiles provider)
 
 ## Run the project
 
