@@ -1,5 +1,8 @@
 # maptiler-openlayer-osm-map
 
+![Image 1](images/screenshot1.png)
+![Image 2](images/screenshot2.png)
+
 ## Table of content
  * [Features](#features)
  * [Run the project](#run-the-project)
